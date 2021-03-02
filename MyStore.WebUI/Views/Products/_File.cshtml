@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MyStore.Domain.Entities.Image>
+@using MyStore.WebUI.Models;
+@using MyStore.Domain.Entities;
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+
+<div id="divImages">
+
+
+
+
+    <input type="file" id="FileUpload" class="btn btn-default" multiple />
+    <input type="button" id="Upload" value="Upload" class="btn btn-default" />
+    <br />
+
+
+    @if (Model.ToList().Count != 0)
+    {
+        if (!(Model.ToList().Count == 1 && Model.First().id_image == 0))
+        {
+            <table class="table" id="tble">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cover)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Product.type)
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cover)
+                        </td>
+                        <td>
+                            @Html.Image("/Images/" + item.id_product + "/" + item.id_image + ".jpg", "Image", "50")
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { id = item.id_image })
+                        </td>
+                    </tr>
+                }
+            </table>
+        }
+    }
+</div>
+<hr />
+<script>
+        $(document).ready(function () {
+            $("#Upload").click(function () {
+                var formData = new FormData($('form').get(0));
+                var totalFiles = document.getElementById("FileUpload").files.length;
+                for (var i = 0; i < totalFiles; i++)
+                {
+                    var file = document.getElementById("FileUpload").files[i];
+
+                    formData.append("FileUpload", file);
+                }
+                formData.append("Model", @Model.Take(1).Single().id_product);
+                $.ajax({
+                    type: "POST",
+                    url: '/Products/Upload',
+                    data: formData,
+                    //dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        alert('succes!!');
+                        $.get('@Url.Action("All", "Products")', { id: @Model.Take(1).Single().id_product }, function (data) {
+                            $("#divImages").html(data);
+                        });
+                    },
+                    error: function (error) {
+                        alert("errror");
+                    }
+                });
+            });
+        });
+
+</script>
+
+

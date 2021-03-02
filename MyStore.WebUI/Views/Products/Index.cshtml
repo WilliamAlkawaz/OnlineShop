@@ -1,0 +1,110 @@
+﻿@model IEnumerable<MyStore.Domain.Entities.Product>
+@using MyStore.WebUI.Models; 
+@using MyStore.Domain.Entities;
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "Products";
+}
+@{
+    Layout = "";
+}
+
+<h2>Products</h2>
+
+@Session["Message"]
+
+
+<a href='@Url.Action("Create","Products")'><div sstyle="width:100px; height:100px"><img src='/Images/add.gif'>Add New Product</div></a>
+
+<table class="table" style="margin:5px">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_category_default)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.on_sale)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reference)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity_discount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.available_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description_short)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="trimage" onclick="window.location='@Url.Action("Edit", "Products", new { id = item.id_product })';" style='cursor: pointer;'>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @if ((from ci in (IEnumerable<Image>)ViewBag.im where ci.id_product == item.id_product select ci.id_image).ToList().Count != 0)
+            {
+                @Html.Image("../Images/" + item.id_product + "/" + (from ci in (IEnumerable<Image>)ViewBag.im where ci.id_product == item.id_product select ci.id_image).First().ToString() + ".jpg", "Image", "50")
+            }
+            else {
+
+                @Html.Image("/Images/en.jpg", "Image", "50")
+            }
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.id_category_default)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.on_sale)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.reference)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.quantity_discount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.available_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description_short)
+        </td>
+        <td>
+            @Ajax.JavaScriptStringEncode(item.description )
+        </td>
+        <td>
+            <p align="center" class="actionButtons">
+                <a href="@Url.Action("Delete", "Products", new { id=item.id_product })">Delete</a>
+            </p>
+            
+        </td>
+    </tr>
+}
+
+</table>

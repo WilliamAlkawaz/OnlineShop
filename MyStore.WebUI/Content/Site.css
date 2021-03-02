@@ -1,0 +1,208 @@
+﻿BODY { 
+    font-family: Cambria, Georgia, "Times New Roman"; 
+    background-color: #fee; 
+    margin: 0; 
+
+} 
+DIV#header DIV.title, DIV.item H3, DIV.item H4, DIV.pager A {     
+    font: bold 1em "Arial Narrow", "Franklin Gothic Medium", Arial; 
+
+} 
+DIV#header 
+{ 
+    background-color: #444; 
+    border-bottom: 2px solid #111; 
+    color: White; 
+
+} 
+DIV#header DIV.title { 
+    font-size: 2em; 
+    padding: .6em; 
+
+} 
+DIV#content {
+    margin-left: 13em; 
+    padding: 1em; 
+
+} 
+DIV#categories { 
+    float: left; 
+    width: 13em; 
+    height: 100%; 
+    border-style: solid; 
+    border-color: grey; 
+    position: absolute; 
+    z-index: 100; 
+}  
+DIV.item { 
+    border-top: 1px dotted gray; 
+    padding-top: .7em;
+    margin-bottom: .7em; 
+
+} 
+DIV.item:first-child { 
+    border-top:none; 
+    padding-top: 0; 
+
+} 
+DIV.item H3 { 
+    font-size: 1.3em; 
+    margin: 0 0 .25em 0; 
+
+} 
+DIV.item H4 { 
+    font-size: 1.1em; 
+    margin:.4em 0 0 0; 
+
+}  
+DIV.pager { 
+    text-align:right; 
+    border-top: 2px solid silver;     
+    padding: .5em 0 0 0; 
+    margin-top: 1em; 
+
+} 
+DIV.pager A { 
+    font-size: 1.1em; 
+    color: #666; 
+    text-decoration: none;       
+    padding: 0 .4em 0 .4em; 
+
+} 
+DIV.pager A:hover { 
+    background-color: Silver; 
+
+} 
+DIV.pager A.selected { 
+    background-color: #353535; 
+    color: White; 
+}
+/*
+DIV#categories A {     
+    font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial; 
+    display: block;     
+    text-decoration: none; 
+    padding: .6em; 
+    color: Black;     
+    border-bottom: 1px solid silver; 
+
+} 
+
+DIV#categories {
+    width:10%;
+}
+DIV#categories A.selected { 
+    background-color: #666; 
+    color: White; 
+
+} 
+
+DIV#categories A:hover { 
+    background-color: #CCC; 
+
+} 
+
+DIV#categories A.selected:hover { 
+    background-color: #666; 
+
+}
+
+div#categories ul {
+    margin: 0;
+    padding: 0em;
+    font-size: 12px; 
+    list-style-type: none; 
+    margin: 0px; 
+}
+
+
+div#categories li:first-child {
+    margin-top:0;
+}
+
+div#categories li {
+    padding: 0px;
+    font-size: 12px; 
+    margin-top: 0px;
+}
+
+div#categories ul li {
+    padding-left: 10px;
+    font-size: 10px;
+}
+    */
+FORM { 
+    margin: 0; 
+    padding: 0; 
+
+} 
+
+DIV.item FORM { 
+    float:right; 
+
+} 
+
+DIV.item INPUT {     
+    color:White; 
+    background-color: #333; 
+    border: 1px solid black; 
+    cursor:pointer;  
+
+} 
+
+H2 { 
+    margin-top: 0.3em 
+
+} 
+
+TFOOT TD { 
+    border-top: 1px dotted gray; 
+    font-weight: bold; 
+
+} 
+
+.actionButtons A, INPUT.actionButtons {     
+    font: .8em Arial; 
+    color: White; 
+    margin: .5em;     
+    text-decoration: none; 
+    padding: .15em 1.5em .2em 1.5em;     
+    background-color: #353535; 
+    border: 1px solid black; 
+
+}
+
+.menu {
+    font-size: 10px; 
+}
+
+.image {
+    width:320px; //30%;
+    height:490px;  
+    float:left; 
+    border-style:solid; 
+    border-color: #ffe; 
+    padding: 0px; 
+    margin: 0px;
+}
+
+.image:hover {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}
+
+.image p {
+    font-size:12px; 
+}
+
+.trimage {
+    border-style:solid; 
+    border-color: #ffe; 
+} 
+
+.trimage:hover {
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}

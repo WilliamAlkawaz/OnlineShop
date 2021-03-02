@@ -1,0 +1,34 @@
+﻿@model MyStore.Domain.Entities.AttributeValue
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AttributeValue</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Attributee.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Attributee.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.value)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.value)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_attributevalue }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,70 @@
+﻿@model List<MyStore.Domain.Entities.Product>
+    @using MyStore.WebUI.Models;
+    @using MyStore.Domain.Entities;
+    
+<link href="~/Content/Site.css" rel="stylesheet" />
+<div style="width: 90%; float:left">
+
+    @foreach (var item in Model)
+    {
+        
+        <div class="image">
+            <table align="center">
+                <tr>
+                    <a href="@Url.Action("Product_Detail", "Home", new { id = item.id_product })">
+<h3>@Html.DisplayFor(modelItem => item.name)</h3></a>
+
+</tr>
+                <tr>
+                        @if ((from ci in (IEnumerable<Image>)ViewBag.im where ci.id_product == item.id_product select ci.id_image).ToList().Count != 0)
+                        {
+                            <img src='@("/Images/" + item.id_product + "/" + (from ci in (IEnumerable<Image>)ViewBag.im where ci.id_product == item.id_product select ci.id_image).First().ToString() + ".jpg")' , style="width:320px; height:250px" />
+                        }
+                        else {
+                            <img src='@("/Images/en.jpg")' , style="width:320px; height:250px" />
+                        }
+
+                        <p>@Html.DisplayFor(modelItem => item.description_short)</p>
+                        @if (item.additional_shipping_cost == 0)
+                        {
+                            <h3>@item.price.ToString("c")</h3>
+                        }
+                        else
+                        {
+                            <h3>
+<strike>@item.price.ToString("c")</strike></h3>
+
+
+
+
+                            <h3 style="color:red">@Decimal.Round((item.price - (item.price * item.additional_shipping_cost / 100)), 2).ToString("c")</h3>
+
+
+
+               <!--  <p style="text-align:center">Html.DisplayFor(modelItem => x)</p>-->
+                        }
+                        <p>
+                            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                <input type="hidden" name="cmd" value="_cart">   
+                                <input type="hidden" name="business" value="balloon@example.com">  
+                                <input type="hidden" name="item_name" value="Welcome Back">  
+                                <input type="hidden" name="on0" value="Color" />  
+                                
+                                <input type="hidden" name="amount" value="12.99">  <input type="hidden" name="currency_code" value="USD">  <input type="hidden" name="add" value="1">  <input type="hidden" name="shopping_url" value="http://www.example.com/Welcome-Back-p33/>  <input type="hidden" name="return" value="http://www.example.com" />  <input type="hidden" name="cancel_return" value="http://www.example.com" />  <input type="submit" name="submit" value="Add to Cart" />
+                            </form>
+
+                            <!--
+                            @using (Html.BeginForm("AddToCart", "Carts"))
+                            {
+                                @Html.Hidden("productId", item.id_product)
+                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                <input type="submit" value="+ Add to cart" />
+                            } 
+                            -->
+                        </p>
+                </tr>
+            </table>
+        </div>
+        
+    }
+</div>

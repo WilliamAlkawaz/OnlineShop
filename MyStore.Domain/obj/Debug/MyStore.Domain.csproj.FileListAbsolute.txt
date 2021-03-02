@@ -1,0 +1,10 @@
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\MyStore.Domain.dll
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\MyStore.Domain.pdb
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\obj\Debug\MyStore.Domain.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\obj\Debug\MyStore.Domain.dll
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\obj\Debug\MyStore.Domain.pdb
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\MyStore.Domain.dll.config
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\EntityFramework.dll
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\EntityFramework.xml
+c:\users\user\documents\visual studio 2015\Projects\MyStore\MyStore.Domain\bin\Debug\EntityFramework.SqlServer.xml

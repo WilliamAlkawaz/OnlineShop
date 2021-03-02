@@ -1,0 +1,64 @@
+﻿@model IEnumerable<MyStore.Domain.Entities.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+@{
+    Layout = "";
+}
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_parent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_add)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.date_upd)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_parent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_add)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.date_upd)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_category }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_category })
+        </td>
+    </tr>
+}
+
+</table>

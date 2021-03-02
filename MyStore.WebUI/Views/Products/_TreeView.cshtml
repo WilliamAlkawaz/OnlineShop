@@ -1,0 +1,134 @@
+﻿
+<script>
+        $(document).ready(function () {
+            $('#data').jstree({
+                "plugins": ["checkbox"]
+            });
+
+            $("#data").on("changed.jstree", function (e, data) {
+                if (data.selected.length) {
+                    $("#id_cat").empty();
+                    $(data.selected).each(function (idx) {
+                        var node = data.instance.get_node(data.selected[idx]);
+                        var s = document.getElementById('id_cat');
+                        s.options[s.options.length] = new Option(node.text, '1');
+                    });
+                }
+                else
+                    $("#id_cat").empty();
+
+            });
+        });
+</script>
+
+
+<div id="data">
+    <ul>
+        <li>
+            Home
+            <ul>
+                @for (int i = 1; i < ViewBag.Count; i++)
+                {
+                    <li>hh</li>
+                                        <!--<li>@ViewBag.jj[i].Text</li>-->
+                    if (ViewBag.Data.Rows[i]["id_parent"].ToString() == (i+1).ToString())
+                    {
+                        <li>
+                            @ViewBag.Data.Rows[i]["name"].ToString()
+                            <ul>
+                                @for (int j = i; j < ViewBag.Count; j++)
+                                {
+                                    if (ViewBag.Data.Rows[j]["id_parent"].ToString() == ViewBag.Data.Rows[i]["id_category"].ToString())
+                                    {
+                                        <li>
+                                            @ViewBag.Data.Rows[j]["name"].ToString()
+                                            <ul>
+                                                @for (int k = j; k < ViewBag.Count; k++)
+                                                {
+                                                    if (ViewBag.Data.Rows[k]["id_parent"].ToString() == ViewBag.Data.Rows[j]["id_category"].ToString())
+                                                    {
+                                                        <li>@ViewBag.Data.Rows[k]["name"].ToString()</li>
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="form-group">
+    <div class="col-md-10">
+        <select id="id_cat">
+            <option> </option>
+        </select>
+    </div>
+</div>
+
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" id="btn3" value="Create" class="btn" />
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $(".btn").click(function () {
+
+        //var optionsData = $.map($('#id_cat')[0].options, function (elem) {
+          //  return (elem.text);
+        //}); // create a variable to hold all the options array.
+
+        var values = $('#id_cat option');
+
+        var optionsData = $.map(values, function (option) {
+            return option.text;
+        });
+
+        $.ajax({
+            url: "/Products/Test03",
+            datatype: "text",
+            data: JSON.stringify(optionsData), //pass this variable to post request as 'options'
+            contentType: "application/json; charset=utf-8",
+            type: "POST",
+            success: function (data) {
+                //alert('Success'); //.html(data);
+            },
+            error: function () {
+                alert('ERROR'); //$("#testarea").html("ERROR");
+            }
+        });
+    });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
